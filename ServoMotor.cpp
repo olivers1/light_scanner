@@ -1,5 +1,4 @@
 #include "ServoMotor.h"
-#include <arduino.h>
 
 ServoMotor::ServoMotor(unsigned int pin, int posMin, int posMax)
 {
@@ -10,9 +9,14 @@ ServoMotor::ServoMotor(unsigned int pin, int posMin, int posMax)
   servo_ptr_ = std::make_shared<Servo>();  // class object initialization on the heap, pointer has address to Servo object
 }
 
-void ServoMotor::servoInit()
+ServoMotor::~ServoMotor()
 {
-  Serial.println("initializing..");
+  Serial.println("destructor [servo motor]");
+}
+
+void ServoMotor::initialize()
+{
+  Serial.println("initializing [servo motor]");
   servo_ptr_->attach(pin_);   // servo motor signal pin
   // calibrate servo motor position
   servo_ptr_->write(180);   // reset servo motor angle to initial/starting position

@@ -2,6 +2,7 @@
 #define LIGHTSCANNER_H
 
 #include "ServoMotor.h"
+#include "LightSensor.h"
 #include <ArxSmartPtr.h>
 
 class LightScanner
@@ -14,8 +15,9 @@ class LightScanner
     unsigned int posYStepIncrement_;  // amount angle increment posY each position change
     unsigned int numSamples_;    // to be passed on to LightSampleHandler object
     unsigned int sampleCycleTime_;   // to be passed on to LightSampleHandler object
-    std::shared_ptr<ServoMotor> servoMotorX_;  // pointer to servo motor object for horizontal (X-axis) movement
-    std::shared_ptr<ServoMotor> servoMotorY_;  // pointer to servo motor object for vertical (Y-axis) movement
+    std::shared_ptr<ServoMotor> servoMotorX_;   // pointer to servo motor object for horizontal (X-axis) movement
+    std::shared_ptr<ServoMotor> servoMotorY_;   // pointer to servo motor object for vertical (Y-axis) movement
+    std::shared_ptr<LightSensor> lightSensor_;  // pointer to light sensor object
 };
 
 #endif

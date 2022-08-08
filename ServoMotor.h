@@ -2,16 +2,17 @@
 #define SERVOMOTOR_H
 
 #include <Servo.h>
+#include <arduino.h>
 #include <ArxSmartPtr.h>
 
 class ServoMotor
 {
   public:
     ServoMotor(unsigned int pin, int posMin, int posMax);
-    void servoInit();
+    void initialize();
     void servoMove(int posNew);
     int getServoPos();
-    //~ServoMotor();
+    ~ServoMotor();
   private:
     int posMin_;
     int posMax_;
